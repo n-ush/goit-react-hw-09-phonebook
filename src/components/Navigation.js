@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { authSelectors } from "../redux/auth";
+import Typography from "@material-ui/core/Typography";
 
 const styles = {
   link: {
@@ -9,7 +10,7 @@ const styles = {
     textDecoration: "none",
     padding: 12,
     fontWeight: 700,
-    color: "#2A363B",
+    color: "#FBFCFC",
   },
   activeLink: {
     color: "#E84A5F",
@@ -17,25 +18,23 @@ const styles = {
 };
 
 export default function Navigation() {
- const isLoggedIn = useSelector(authSelectors.getIsAuthenticated)
+  const isLoggedIn = useSelector(authSelectors.getIsAuthenticated);
   return (
     <nav>
-    <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
-      Главная
-    </NavLink>
-
-    {isLoggedIn && (
-      <NavLink
-        to="/contacts"
-        exact
-        style={styles.link}
-        activeStyle={styles.activeLink}
-      >
-        Контакты
+      <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
+        <Typography variant="h6">Home</Typography>
       </NavLink>
-    )}
-  </nav>
-  )
+
+      {isLoggedIn && (
+        <NavLink
+          to="/contacts"
+          exact
+          style={styles.link}
+          activeStyle={styles.activeLink}
+        >
+          <Typography variant="h6">Contacts</Typography>
+        </NavLink>
+      )}
+    </nav>
+  );
 }
-
-

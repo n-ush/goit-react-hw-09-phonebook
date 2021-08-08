@@ -1,11 +1,14 @@
 .list {
   width: 300px;
+  font-size: 18px;
+  margin-top: 20px;
 }
 
 .list_item {
   display: flex;
   margin-bottom: 10px;
   justify-content: space-between;
+  align-items: center;
 }
 
 .contact {

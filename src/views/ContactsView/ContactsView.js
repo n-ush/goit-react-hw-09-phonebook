@@ -8,21 +8,22 @@ import selectors from "../../redux/selectors";
 
 export default function Contacts() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectors.getLoading)
+  const isLoading = useSelector(selectors.getLoading);
 
   useEffect(() => {
-    dispatch(operations.fetchContacts())
-  }, [dispatch])
-  
+    dispatch(operations.fetchContacts());
+  }, [dispatch]);
 
-    return (
-      <div>
-        <h1>Phonebook</h1>
-        <ContactForm />
-        <h2>Contacts</h2>
-        <Filter />
-        <ContactList />
-        {isLoading && <h1>Loading...</h1>}
-      </div>
-    );
+  return (
+    <div>
+      <h1>Phonebook</h1>
+
+      <ContactForm />
+      <h2>Contacts</h2>
+
+      <Filter />
+      <ContactList />
+      {isLoading && <h1>Loading...</h1>}
+    </div>
+  );
 }

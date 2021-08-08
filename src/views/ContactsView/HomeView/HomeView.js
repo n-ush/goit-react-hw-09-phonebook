@@ -15,13 +15,15 @@ const styles = {
 };
 
 const HomeView = () => (
-  <div style={styles.container}>
-    <h1 style={styles.title}>
-      Приветственная страница нашего сервиса{" "}
-      <span role="img" aria-label="Иконка приветствия">
-        💁‍♀️
-      </span>
-    </h1>
+  <div style={styles.background}>
+    <div style={styles.container}>
+      <h1 style={styles.title}>
+        Welcome page
+        <span role="img" aria-label="Иконка приветствия">
+          💁‍♀️
+        </span>
+      </h1>
+    </div>
   </div>
 );
 

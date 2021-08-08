@@ -4,6 +4,8 @@ import Navigation from "./Navigation";
 import UserMenu from "./UserMenu/UserMenu";
 import AuthNav from "./AuthNav";
 import { authSelectors } from "../redux/auth";
+import Toolbar from "@material-ui/core/Toolbar";
+import AppBarStyles from "@material-ui/core/AppBar";
 
 const styles = {
   header: {
@@ -15,12 +17,14 @@ const styles = {
 };
 
 export default function AppBar() {
-const isLoggedIn = useSelector(authSelectors.getIsAuthenticated)
+  const isLoggedIn = useSelector(authSelectors.getIsAuthenticated);
 
   return (
-  <header style={styles.header}>
-    <Navigation />
-    {isLoggedIn ? <UserMenu /> : <AuthNav />}
-  </header>
-);
- }
+    <AppBarStyles position="static">
+      <Toolbar style={styles.header}>
+        <Navigation />
+        {isLoggedIn ? <UserMenu /> : <AuthNav />}
+      </Toolbar>
+    </AppBarStyles>
+  );
+}

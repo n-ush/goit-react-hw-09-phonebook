@@ -1,9 +1,11 @@
 import React, { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import shortid from "shortid";
-import styles from "./ContactForm.module.css";
 import operations from "../../redux/operations";
 import selectors from "../../redux/selectors";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
 
 export default function ContactForm() {
   const nameInputId = shortid.generate();
@@ -46,36 +48,44 @@ export default function ContactForm() {
   );
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
-      <label htmlFor={nameInputId}>Name</label>
-      <input
-        value={name}
-        type="text"
-        name="name"
-        id={nameInputId}
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-        required
-        onChange={handleChange}
-        className={styles.input}
-      />
+    <form onSubmit={handleSubmit} noValidate autoComplete="off">
+      <Grid container spacing={3} alignItems="center">
+        <Grid item xs={2}>
+          <TextField
+            label="Name"
+            variant="outlined"
+            value={name}
+            type="text"
+            name="name"
+            id={nameInputId}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+            required
+            onChange={handleChange}
+          />
+        </Grid>
 
-      <label htmlFor={numberInputId}>Number</label>
-      <input
-        value={number}
-        id={numberInputId}
-        onChange={handleChange}
-        type="tel"
-        name="number"
-        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-        title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-        required
-        className={styles.input}
-      />
+        <Grid item xs={2}>
+          <TextField
+            label="Number"
+            variant="outlined"
+            value={number}
+            id={numberInputId}
+            onChange={handleChange}
+            type="tel"
+            name="number"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+            required
+          />
+        </Grid>
 
-      <button type="submit" className={styles.btn}>
-        Add contact
-      </button>
+        <Grid item xs={2}>
+          <Button variant="contained" color="primary" type="submit">
+            Add contact
+          </Button>
+        </Grid>
+      </Grid>
     </form>
   );
 }

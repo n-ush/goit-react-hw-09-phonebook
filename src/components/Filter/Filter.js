@@ -3,6 +3,7 @@ import styles from "./Filter.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../redux/actions";
 import selectors from "../../redux/selectors";
+import TextField from "@material-ui/core/TextField";
 
 export default function Filter() {
   const dispatch = useDispatch();
@@ -16,14 +17,12 @@ export default function Filter() {
   );
 
   return (
-    <label>
-      Find contacts by name
-      <input
-        type="text"
-        value={value}
-        onChange={onChange}
-        className={styles.input}
-      />
-    </label>
+    <TextField
+      id="standard-basic"
+      label="Find contacts by name"
+      value={value}
+      onChange={onChange}
+      type="text"
+    />
   );
 }
